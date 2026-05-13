@@ -165,7 +165,28 @@ console.log(newGenres);
 
 const updatedBook = {
   ...book,
+
+  //Adding a new property
   moviePublicationDate: "2001-12-19",
+
+  //Overwrting  an existing property
   pages: 1210,
 };
 updatedBook;
+
+//function getYear(str) {
+//  return str.split("-")[0];
+//}
+
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
+
+const summary = `${title} is a ${pages}-page long book, written by ${author}. It was published on ${getYear(
+  publicationDate,
+)}. The book has ${hasMovieAdaptation ? "" : "not "} been adapted into a movie. `;
+
+summary;
+
+const pagesRange = pages > 1000 ? "over a thousand" : "less than a thousand";
+pagesRange;
+console.log(`The book has ${pagesRange} pages.`);
