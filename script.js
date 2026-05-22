@@ -216,6 +216,7 @@ const countWrong =
   book.reviews.librarything.reviewsCount || "No reviews in LibraryThing";
 countWrong;
 
+// ?? is called the Nullish Coalescing Operator in JavaScript. It is used to provide a default value when the left-hand side expression evaluates to null or undefined. Unlike the logical OR operator (||), which considers falsy values (such as 0, "", false) as well, the nullish coalescing operator only considers null and undefined as "nullish" values.
 const count =
   book.reviews.librarything.reviewsCount ?? "No reviews in LibraryThing";
 count;
