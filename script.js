@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 //Destructuring
-
+/*
 const book = getBook(2);
 book;
 // const title = book.title;
@@ -220,3 +220,75 @@ countWrong;
 const count =
   book.reviews.librarything.reviewsCount ?? "No reviews in LibraryThing";
 count;
+
+function getTotalReviews(book) {
+  const goodreadsCount = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarythingCount = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreadsCount + librarythingCount;
+}
+console.log(getTotalReviews(book));
+*/
+
+function getTotalReviews(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+
+  return goodreads + librarything;
+}
+
+const books = getBooks();
+books;
+
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+const bookTitles = books.map((book) => book.title);
+console.log(bookTitles);
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviews(book),
+}));
+essentialData;
+
+const longBooksWithMovie = books.filter(
+  (book) => book.pages > 500 && book.hasMovieAdaptation,
+);
+longBooksWithMovie;
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((book) => book.title);
+adventureBooks;
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks;
+
+const arr = [3, 7, 1, 9, 4];
+const sorted = arr.slice().sort((a, b) => a - b);
+sorted;
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;
+
+//Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+//2) Delete a book from the array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+//3) Update a book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 2 ? { ...book, pages: 350 } : book,
+);
+booksAfterUpdate;
