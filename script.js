@@ -228,7 +228,7 @@ function getTotalReviews(book) {
 }
 console.log(getTotalReviews(book));
 */
-
+/*
 function getTotalReviews(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -292,3 +292,27 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
   book.id === 2 ? { ...book, pages: 350 } : book,
 );
 booksAfterUpdate;
+*/
+
+// fetch("https://jsonplaceholder.typicode.com/posts")
+//   .then((response) => response.json())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error("Error fetching data:", error));
+
+// console.log("This will log before the fetch completes");
+
+async function getTodos() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  console.log("This will log after the fetch completes");
+}
+
+const todos = getTodos();
+console.log(todos);
